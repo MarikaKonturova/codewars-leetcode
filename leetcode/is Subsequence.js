@@ -1,22 +1,13 @@
 var isSubsequence = function (s, t) {
-  if (s.length === t.length) {
-    return s === t;
-  }
-
-  if (!t.length) {
-    return false;
-  }
-
-  let index = -1;
-
-  for (char of s) {
-    let newIndex = t.indexOf(char);
-    if (newIndex <= index) {
-      return false;
+  let index_s = 0;
+  let index_t = 0;
+  while (index_s < s.length && index_t < t.length) {
+    if (s[index_s] === t[index_t]) {
+      index_s += 1;
     }
-    index = newIndex;
+    index_t += 1;
   }
-  return true;
+  return index_s === s.length;
 };
 
 console.log(isSubsequence("ab", "baab"));
